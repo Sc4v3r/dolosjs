@@ -68,4 +68,5 @@ CRON_JOB="@reboot sleep 30 && /sbin/ip addr add 172.31.255.1/24 dev wlan0 && /sb
 (crontab -l 2>/dev/null | grep -F "$CRON_JOB") || (crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
 
 echo "All set up! Reboot and check that your management AP is running and accessible"
+echo "AP: Deskjet - Password: Password1 - MGMT IP once connected to AP: 172.31.255.1"
 echo "Then you can 'bash finish_setup.sh' to autorun the attack"

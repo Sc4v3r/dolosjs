@@ -61,5 +61,11 @@ nmcli d set wlan0 managed no
 cd ../../
 npm install
 
+# Add cron job to bring up wlan0 30sec after boot
+CRON_JOB="@reboot sleep 30 && /sbin/ip addr add 172.31.255.1/24 dev wlan0 && /sbin/ip link set wlan0 up"
+
+# Check if the cron job already exists, if not add it
+(crontab -l 2>/dev/null | grep -F "$CRON_JOB") || (crontab -l 2>/dev/null; echo "$CRON_JOB") | crontab -
+
 echo "All set up! Reboot and check that your management AP is running and accessible"
 echo "Then you can 'bash finish_setup.sh' to autorun the attack"

@@ -162,7 +162,7 @@ fastify.ready(function(err){
 
 // Run the server!
 const start = async () => {
-  fastify.listen(4444, (err) => {
+  fastify.listen({ port: 4444, host: '0.0.0.0' }, (err) => { ... })
     if (err) {
       fastify.log.error(err)
       process.exit(1)
